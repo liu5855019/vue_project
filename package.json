@@ -1,0 +1,23 @@
+{
+  "name": "vue_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liu5855019/vue_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liu5855019/vue_project/issues"
+  },
+  "homepage": "https://github.com/liu5855019/vue_project#readme",
+  "devDependencies": {
+    "@vue/cli": "^5.0.8"
+  }
+}
