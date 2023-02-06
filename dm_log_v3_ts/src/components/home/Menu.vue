@@ -12,7 +12,7 @@
         >
           <el-sub-menu index="1">
             <template #title>
-              <el-icon><el-icon-location /></el-icon>
+              <el-icon><location /></el-icon>
               <span>Navigator One</span>
             </template>
               <el-menu-item index="1-1">item one</el-menu-item>
