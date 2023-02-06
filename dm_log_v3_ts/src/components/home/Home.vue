@@ -6,8 +6,16 @@
       <el-container class="content">
         <Menu></Menu>
         <el-container>
-          <el-main>Main</el-main>
-          <el-footer><Footer></Footer></el-footer>
+          <el-main>
+            <Breadcrumb></Breadcrumb>
+            <div class="main">
+              <router-view></router-view>
+            </div>
+          </el-main>
+          
+          <el-footer>
+            <Footer></Footer>
+          </el-footer>
         </el-container>
       </el-container>
 
@@ -22,6 +30,7 @@ import { defineComponent } from 'vue';
 import Header from '@/components/home/Header.vue';
 import Menu from '@/components/home/Menu.vue'
 import Footer from '@/components/home/Footer.vue';
+import Breadcrumb from '@/components/home/Breadcrumb.vue'
 
 
 export default defineComponent({
@@ -32,7 +41,8 @@ export default defineComponent({
   components: {
     Header,
     Menu,
-    Footer
+    Footer,
+    Breadcrumb
   }
 });
 </script>
@@ -50,6 +60,11 @@ export default defineComponent({
     width: 100%;
     top: 64px;
     bottom: 0;
+
+    .main {
+      background: white;
+      margin: 20px 0;
+    }
   }
 }
 
