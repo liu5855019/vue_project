@@ -4,9 +4,7 @@
       <Header></Header>
 
       <el-container class="content">
-        <el-aside width="100px">
-          <Menu></Menu>
-        </el-aside>
+        <Menu></Menu>
         <el-container>
           <el-main>Main</el-main>
           <el-footer><Footer></Footer></el-footer>
