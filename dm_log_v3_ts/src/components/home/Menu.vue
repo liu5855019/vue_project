@@ -18,9 +18,9 @@
                 <span>{{ route.name }}</span>
               </template>
 
-              <el-menu-item-group v-for="(children, index1) in route.children" :key="index1">
+              <template v-for="(children, index1) in route.children" :key="index1">
                 <el-menu-item :index="children.path">{{children.name}}</el-menu-item>
-              </el-menu-item-group>
+              </template>
             
             </el-sub-menu>
           </template>
@@ -37,12 +37,9 @@ import { defineComponent } from 'vue';
 import { RouteRecordRaw } from 'vue-router'
 import {
   Document,
-  Menu as IconMenu,
   Location,
   Setting,
 } from '@element-plus/icons-vue'
-import { property } from 'lodash';
-
 
 
 export default defineComponent({
