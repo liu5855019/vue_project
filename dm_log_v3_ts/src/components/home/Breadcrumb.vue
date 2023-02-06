@@ -1,7 +1,8 @@
 <template>
     <div>
         <el-card>
-            <el-breadcrumb :separator-icon="ArrowRight">
+            <!-- <el-breadcrumb :separator-icon="ArrowRight">-->
+            <el-breadcrumb >
                 <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
                 <el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" :to="{path: item.path
                 }">
@@ -14,13 +15,13 @@
 
 <script lang="ts" >
 
-import { ArrowRight } from '@element-plus/icons-vue'
+// import { ArrowRight } from '@element-plus/icons-vue'
 import { defineComponent } from 'vue';
 
 export default defineComponent({
     data() {
         return {
-            ArrowRight: ArrowRight
+            // ArrowRight: ArrowRight
         }
     },
     setup() {

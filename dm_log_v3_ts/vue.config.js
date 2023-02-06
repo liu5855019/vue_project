@@ -4,6 +4,19 @@ module.exports = defineConfig({
   lintOnSave: false,
   devServer: {
     open: true,
-    host: "localhost"
+    host: "localhost",
+    proxy: { // 配置跨域
+      '/api': {
+        target:'http://len.zaiyuan.cc:8001',
+        changOrigin: true,
+        pathRewrite: {
+          '/api':''
+        }
+      }
+    }
+  },
+
+  configureWebpack: {
+    devtool: 'source-map'
   }
 })
