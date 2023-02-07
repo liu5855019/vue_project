@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { LogDotaGetDeviceList } from "@/assets/common/request";
+import * as request from "@/assets/common/request";
 
 
 
@@ -44,16 +44,16 @@ export default defineComponent({
                 },
             ],
             value: "",
-            selectData: ["1","2"]
+            selectData: []
         }
     },
     created() {
-        LogDotaGetDeviceList()
+        request.LogDotaGetDeviceList()
         .then(res => {
             console.log(res);
-            if (res.status == 200) {
+            if (res) {
                 this.selectData = res.data;
-                this.value = this.selectData[0];
+                this.value = res.data[0];
             }
         })
         .catch(err => {
@@ -62,7 +62,15 @@ export default defineComponent({
     },
     methods: {
         changed() {
-            console.log(this.value + "changed");
+            if (this.value.length > 0) {
+                request.LogDotaGetGroupList(this.value)
+                .then((res) => {
+                    console.log(res.data);
+                })
+                .catch(err => {
+                    console.error(err);
+                })
+            }
         }
     }
 })
