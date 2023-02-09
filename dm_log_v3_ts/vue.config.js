@@ -7,7 +7,7 @@ module.exports = defineConfig({
     host: "localhost",
     proxy: { // 配置跨域
       '/api': {
-        target:'http://len.zaiyuan.cc:8001',
+        target:'http://192.168.52.21:8001',
         changOrigin: true,
         pathRewrite: {
           '/api':''

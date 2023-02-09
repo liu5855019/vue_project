@@ -45,3 +45,15 @@ export function LogDotaGetGroupList(deviceId: string) {
     })
 }
 
+export function LogDotaSearchLog(deviceId: string, groupId: string)
+{
+    return request({
+        url: "/LogDota/SearchLog",
+        method: "GET",
+        params: {
+            deviceId: deviceId,
+            groupId: groupId
+        }
+    })
+}
+
