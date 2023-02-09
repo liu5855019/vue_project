@@ -18,7 +18,11 @@
                 :value="item.name" />
         </el-select>
 
-        <div>chart</div>
+        <div class="chart">
+            <el-card>
+                <div class="chart1" id="chart1"></div>
+            </el-card>
+        </div>
     </div>
 </template>
 
@@ -26,7 +30,7 @@
 import { defineComponent } from 'vue';
 import * as request from "@/assets/common/request";
 import { LogDotaRun } from "../../assets/common/models";
-
+import * as echarts from 'echarts';
 
 export default defineComponent({
     data() {
@@ -39,6 +43,7 @@ export default defineComponent({
         }
     },
     created() {
+
         request.LogDotaGetDeviceList()
         .then(res => {
             console.log(res);
@@ -48,6 +53,27 @@ export default defineComponent({
         })
         .catch(err => {
             console.error(err);
+        })
+        
+
+    },
+    mounted() {
+        let myChart = echarts.init(document.getElementById("chart1")!);
+        myChart.setOption({
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: 'line',
+                smooth: true
+                }
+            ]
         })
     },
     methods: {
@@ -79,3 +105,17 @@ export default defineComponent({
 })
 
 </script>
+
+<style lang="scss" scoped>
+.chart {
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+
+    .chart1 {
+            width: 100%;
+            height: 500px;
+    }
+    
+}
+</style>
