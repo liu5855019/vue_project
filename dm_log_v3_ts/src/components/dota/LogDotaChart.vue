@@ -11,16 +11,14 @@
 
         <el-select v-model="group" class="group" placeholder="Select Group" size="large" key="group"
             @change="groupChanged()">
-            <el-option v-for="(item, index) in groupDatas" 
-            :key="item.name + '--' + item.count" :label="item.name + '--' + item.count" :value="item.name" />
+            <el-option 
+                v-for="(item, index) in groupDatas" 
+                :key="item.name + '--' + item.count" 
+                :label="item.name + '--' + item.count" 
+                :value="item.name" />
         </el-select>
 
-        <el-table :data="tableData" border style="width: 100%">
-            <el-table-column prop="deviceId" label="Device" width="100" />
-            <el-table-column prop="groupId" label="Group" width="100" />
-            <el-table-column prop="createDt" label="CreateDt" />
-            <el-table-column prop="isShop" label="IsShop" />
-        </el-table>
+        <div>chart</div>
     </div>
 </template>
 

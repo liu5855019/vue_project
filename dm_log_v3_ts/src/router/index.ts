@@ -33,11 +33,20 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/dota',
-    name: 'dota',
-    redirect: '/dota/mengjing',
-    //iconClass:'aaa',
+    name: '刀塔传奇',
+    redirect: '/dota/logrun',
     component: () => import('../components/home/Home.vue'),
     children: [
+      {
+        path: '/dota/logrun',
+        name: '运行记录',
+        component: ()=> import('../components/dota/LogDota.vue')
+      },
+      {
+        path: '/dota/logrunchart',
+        name: '运行图表',
+        component: ()=> import('../components/dota/LogDotaChart.vue')
+      },
       {
         path: '/dota/mengjing',
         name: '梦境记录',
