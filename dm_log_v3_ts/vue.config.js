@@ -5,6 +5,7 @@ module.exports = defineConfig({
   devServer: {
     open: true,
     host: "localhost",
+    port:5000,
     proxy: { // 配置跨域
       '/api': {
         target:'http://192.168.52.21:8001',

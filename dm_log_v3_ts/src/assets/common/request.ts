@@ -2,7 +2,8 @@ import axios  from "axios";
 import * as tools from './tools';
 
 const request = axios.create({
-    baseURL: '/api',
+    // baseURL: '/api',
+    baseURL: 'https://localhost:6001',
     timeout: 5000
 });
 
