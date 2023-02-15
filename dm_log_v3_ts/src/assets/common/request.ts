@@ -3,7 +3,7 @@ import * as tools from './tools';
 
 const request = axios.create({
     // baseURL: '/api',
-    baseURL: 'https://localhost:6001',
+    baseURL: 'http://192.168.52.21:8001',
     timeout: 5000
 });
 
