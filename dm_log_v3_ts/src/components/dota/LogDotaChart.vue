@@ -125,8 +125,6 @@ export default defineComponent({
                 this.xData = data1;
                 this.yData = data2;
                 this.resetOption();
-        var myChart = echarts.init(document.getElementById("chart1")!);
-        myChart.setOption(this.option);
             })
             .catch(err => {
                 console.error(err);
