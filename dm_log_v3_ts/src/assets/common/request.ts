@@ -1,5 +1,6 @@
 import axios  from "axios";
 import * as tools from './tools';
+import { LogDotaRun } from "./models";
 
 const request = axios.create({
     // baseURL: '/api',
@@ -18,7 +19,8 @@ request.interceptors.response.use((response) => {
     if (response.status == 200) {
         // todo
     }
-    return response;
+    
+    return Promise.resolve(response);
 }, (error) => {
     return Promise.reject(error);
 });
@@ -48,13 +50,13 @@ export function LogDotaGetGroupList(deviceId: string) {
 
 export function LogDotaSearchLog(deviceId: string, groupId: string)
 {
-    return request({
+    return request<Array<LogDotaRun>>({
         url: "/LogDota/SearchLog",
         method: "GET",
         params: {
             deviceId: deviceId,
             groupId: groupId
-        }
+        },
     })
 }
 
