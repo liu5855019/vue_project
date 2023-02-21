@@ -29,9 +29,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import * as request from "@/assets/common/request";
-import { LogDotaRun } from "../../assets/common/models";
 import * as echarts from 'echarts';
-import { anyTypeAnnotation } from '@babel/types';
+
+import { LogDotaRun } from "../../assets/common/models";
+import * as tools from "../../assets/common/tools"
+
+
+let chart : echarts.ECharts;
 
 export default defineComponent({
     data() {
@@ -58,9 +62,8 @@ export default defineComponent({
         })
     },
     mounted() {
+        chart = echarts.init(document.getElementById("chart1")!);
         this.resetOption();
-        var chart = echarts.init(document.getElementById("chart1")!);
-        chart.setOption(this.option);
     },
     methods: {
         resetOption() {
@@ -83,6 +86,7 @@ export default defineComponent({
                     }
                 ]
             };
+            chart.setOption(this.option);
         },
         deviceChanged() {
             if (this.device.length > 0) {
@@ -97,26 +101,27 @@ export default defineComponent({
             }
         },
         groupChanged() {
-            console.log(this.group)
             request.LogDotaSearchLog(this.device, this.group)
             .then(res => {
                 console.log(res);
-                let datas: Array<LogDotaRun> = res.data;
+                let datas = new Array<LogDotaRun>();
+                res.data.forEach(element => {
+                    let item = new LogDotaRun().copy(element);
+                    datas.push(item);
+                });
                 
                 var data1 = new Array<string>();
                 var data2 = new Array<number>();
                 for (let index = 0; index < datas.length; index++) {
                     const pre = datas[index -1];
                     const element = datas[index];
-                    data1.push(element.createDt?.toString() ?? "");
+                    data1.push(element.createDt?.toTimeString() ?? "");
                     if (pre == null) {
                         data2.push(0);
                     } else {
-                        data2.push(1);
+                        data2.push(tools.CompareDate(element.createDt!, pre.createDt!));
                     }
                 }
-                console.log(data1);
-                console.log(data2);
                 this.xData = data1;
                 this.yData = data2;
                 this.resetOption();
