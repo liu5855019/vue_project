@@ -119,7 +119,8 @@ export default defineComponent({
                     if (pre == null) {
                         data2.push(0);
                     } else {
-                        data2.push(tools.CompareDate(element.createDt!, pre.createDt!));
+                        let interval = tools.CompareDate(element.createDt!, pre.createDt!);
+                        data2.push(interval > 100 ? 100 : interval);
                     }
                 }
                 this.xData = data1;
