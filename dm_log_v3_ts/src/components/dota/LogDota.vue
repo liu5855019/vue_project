@@ -16,10 +16,22 @@
         </el-select>
 
         <el-table :data="tableData" border style="width: 100%">
-            <el-table-column prop="deviceId" label="Device" width="100" />
+            <el-table-column label="Index" width="100" >
+                <template v-slot="scpoe">
+                    <div>
+                        {{ tableData.indexOf(scpoe.row) + 1 }}
+                    </div>
+                </template>
+            </el-table-column>
             <el-table-column prop="groupId" label="Group" width="100" />
             <el-table-column prop="createDt" label="CreateDt" />
-            <el-table-column prop="isShop" label="IsShop" />
+            <el-table-column prop="isShop" label="IsShop">
+                <template v-slot="scpoe">
+                    <div :style="{'color': scpoe.row.isShop ? 'red' : 'blue'}">
+                        {{ scpoe.row.isShop ? "是" : "否" }}
+                    </div>
+                </template>
+            </el-table-column>
         </el-table>
     </div>
 </template>
@@ -28,6 +40,7 @@
 import { defineComponent } from 'vue';
 import * as request from "@/assets/common/request";
 import { LogDotaRun } from "../../assets/common/models";
+import { column } from 'element-plus/es/components/table-v2/src/common';
 
 
 export default defineComponent({
