@@ -76,6 +76,12 @@ export default defineComponent({
             console.log(this.xData);
             console.log(this.yData);
             this.option = {
+                title: {
+                    text: 'Dota run chart'
+                },
+                tooltip: { // 鼠标放上去的时候 显示数据; item: 放到点上才显示, axis: 与点垂直都显示, none
+                    trigger: 'axis'
+                },
                 xAxis: {
                     type: 'category',
                     data: this.xData //['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'aaa']
