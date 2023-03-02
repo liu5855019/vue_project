@@ -3,7 +3,7 @@
         <el-select v-model="device" class="device" placeholder="Select Device" size="large" key="device"
             @change="deviceChanged()">
             <el-option 
-                v-for="(item, index) in deviceDatas" 
+                v-for="(item) in deviceDatas" 
                 :key="item" 
                 :label="item" 
                 :value="item" />
@@ -12,7 +12,7 @@
         <el-select v-model="group" class="group" placeholder="Select Group" size="large" key="group"
             @change="groupChanged()">
             <el-option 
-                v-for="(item, index) in groupDatas" 
+                v-for="(item) in groupDatas" 
                 :key="item.name + '--' + item.count" 
                 :label="item.name + '--' + item.count" 
                 :value="item.name" />
@@ -36,6 +36,11 @@ import * as tools from "../../assets/common/tools"
 
 
 let chart : echarts.ECharts;
+
+window.addEventListener('resize', function() {
+    chart.resize();
+});
+
 
 export default defineComponent({
     data() {
