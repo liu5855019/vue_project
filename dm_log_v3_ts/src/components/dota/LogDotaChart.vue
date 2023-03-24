@@ -67,7 +67,7 @@ export default defineComponent({
         })
     },
     mounted() {
-        chart = echarts.init(document.getElementById("chart1")!);
+        chart = echarts.init(document.getElementById("chart1")! as HTMLDivElement);
         this.resetOption();
     },
     methods: {
